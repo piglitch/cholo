@@ -15,13 +15,12 @@ func main() {
 	for {
 		b := make([]byte, 8)
 		n, err := f.Read(b)
-		fmt.Printf("read: %s\n", string(b[:n]))
 		if err != nil {
-			os.Exit(0)
-			return
+			log.Fatal(err)
 		}
 		if err == io.EOF {
 			os.Exit(0)
 		}
+		fmt.Printf("read: %s\n", string(b[:n]))
 	}
 }
